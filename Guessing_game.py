@@ -12,10 +12,19 @@ def generate_code():
     return digit[:3]
 
 def comparision(secret_code,guess):
-    if len(guess)!=len(secret_code):
+    if len(guess)!=len(secret_code) or ord(guess[0])<ord('0') or ord(guess[0])>ord('9') or ord(guess[1])<ord('0') or ord(guess[1])>ord('9') or ord(guess[2])<ord('0') or ord(guess[2])>ord('9'):
         return '**Invalid guess ! Dont\'t u know d meaning of 3 digit no. !'
+    if guess[0]=='0' and guess[1]=='0' and guess[2]=='0':
+        return '**Hey Kid! This is just ZERO, Not a 3 digit no.'
+    elif guess[0]=='0' and guess[1]=='0':
+        return '**Hey Kid! This is single digit no. , Not a 3 digit no.'
+    elif guess[0]=='0':
+        return '**Hey Kid! This is two digit no. , Not a 3 digit no.'
+
+    if guess[0]==guess[1] or guess[0]==guess[2] or guess[1]==guess[2]:
+        return '**Bro read carefully! All digits should be distinct'
     if secret_code==guess:
-        return 'H U R R A Y ! CODE CRACkED !'
+        return 'H U R R A Y ! CODE CRACKED !'
     clue=[]
 
     for ind,num in enumerate(guess):
