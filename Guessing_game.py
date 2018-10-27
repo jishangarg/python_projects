@@ -15,7 +15,7 @@ def comparision(secret_code,guess):
     if len(guess)!=len(secret_code):
         return '**Invalid guess ! Dont\'t u know d meaning of 3 digit no. !'
     if secret_code==guess:
-        return 'H U R R A Y ! CODE CRACKED !'
+        return 'H U R R A Y ! CODE CRACkED !'
     clue=[]
 
     for ind,num in enumerate(guess):
