@@ -1,17 +1,21 @@
 import random
 def my_guess():
-    return list(input("What is your guess ?"))
+    return list(input("-Guess a 3 digit no. with non-repeating digits "))
 
 def generate_code():
     digit=[]
     for num in range(10):
         digit.append(str(num))
     random.shuffle(digit)
+    if digit[0]=='0':
+        digit[0]=digit[9]
     return digit[:3]
 
 def comparision(secret_code,guess):
+    if len(guess)!=len(secret_code):
+        return '**Invalid guess ! Dont\'t u know d meaning of 3 digit no. !'
     if secret_code==guess:
-        return 'CODE CRACKED !'
+        return 'H U R R A Y ! CODE CRACKED !'
     clue=[]
 
     for ind,num in enumerate(guess):
@@ -28,12 +32,17 @@ def comparision(secret_code,guess):
 print("Hare Krishna everyone and Welcome to code Breaker !")
 secret_code=generate_code()
 guess='1'
+count=0
 while guess!=secret_code:
     guess=my_guess()
+    count+=1
     print('Status of ur guess: ')
     clue_arr=comparision(secret_code,guess)
-    for clue in clue_arr:
-        print(clue)
+    if(type('rr')==type(clue_arr)):
+        print(clue_arr)
+    else:
+        for clue in clue_arr:
+            print(clue)
 
-
+print('u took {x} turns to guess correctly'.format(x=count))
 
